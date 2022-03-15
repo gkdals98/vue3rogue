@@ -1,7 +1,34 @@
 import { defineConfig } from 'vite'
+import EnvironmentPlugin from 'vite-plugin-environment'
 import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from "url";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()]
+const commonSettings = {
+  plugins: [
+    EnvironmentPlugin(
+      {
+        //sample
+        'SAMPLE': 'sample!',
+      }
+    ),
+    vue(),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    }
+  }
+}
+
+export default defineConfig(({ command, mode }) => {
+  if (command === 'serve') {
+    return {
+      ...commonSettings
+    }
+  } else {
+    return {
+      ...commonSettings
+    }
+  }
 })

@@ -2,6 +2,7 @@
 </script>
 
 <template>
+Awesome Menu!!
 </template>
 
 <style lang="scss">
