@@ -18,6 +18,9 @@ const commonSettings = {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     }
+  },
+  server: {
+    https: true,
   }
 }
 
@@ -26,9 +29,8 @@ export default defineConfig(({ command, mode }) => {
     return {
       ...commonSettings
     }
-  } else {
-    return {
-      ...commonSettings
-    }
+  }
+  return {
+    ...commonSettings
   }
 })
